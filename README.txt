@@ -6,7 +6,6 @@ Introduction
 ------------
 Sentrifugo is an Open Source Human Resource Management Software, ideally providing Employee Management, Recruitment Process, Leave Management, Background Check, Analytics and Logs. It enables the administrators to configure the standards used in the organization such as currency codes, date formats, ethnic codes, etc. The software also meets the employee's everyday needs like Leave Management. It tracks existing employee data which traditionally includes personal history, skills, capabilities and accomplishments.
 Sentrifugo is written in PHP(Zend) and is designed to run on Apache webserver and requires MySQL.
-Sentrifugo
 
 Installation
 ------------

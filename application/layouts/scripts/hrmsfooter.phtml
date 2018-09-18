@@ -1,8 +1,8 @@
 <?php
-/********************************************************************************* 
+/*********************************************************************************
  *  This file is part of Sentrifugo.
  *  Copyright (C) 2015 Sapplica
- *   
+ *
  *  Sentrifugo is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -17,10 +17,10 @@
  *  along with Sentrifugo.  If not, see <http://www.gnu.org/licenses/>.
  *
  *  Sentrifugo Support <support@sentrifugo.com>
- ********************************************************************************/ 
+ ********************************************************************************/
 ?>
 
-<?php if($actionName !='browserfailure'){ ?> 			            
+<?php if($actionName !='browserfailure'){ ?>
 					</div>
                    </div>
 		         <div style="clear: both;"></div>
@@ -30,24 +30,24 @@
 	</div>
 </div>
 	<div style="height: 20px;">&nbsp;</div>
-</div>			
+</div>
         <div class="copytxt">
-        	<div class="copy-center"><span class="copy_left">&copy; BreadTalk, <?php echo date('Y');?></span><span class="copy_right"></span></div>	
-         </div>   
-			<div id="footer">                        
+        	<div class="copy-center"><span class="copy_left">&copy; BreadTalk, <?php echo date('Y');?></span><span class="copy_right"></span></div>
+         </div>
+			<div id="footer">
 				<div id="quickview" style="display:none"></div>
 				<div id="dialog" title="Confirmation Required" style="display: none; box-shadow: 0 3px 3px rgba(0, 0, 0, 0); min-height:20px !important; padding-top: 15px;">
-				    <div id="dialogText"></div> 
+				    <div id="dialogText"></div>
                  </div>
 				<div class="footerdivbg"> <!-- added by sapplica -->
 					<?php if($auth->hasIdentity()) {?>
 					<a class="settings" href="<?php echo BASE_URL; ?>viewsettings/1">
 						<img width="18" height="19" border="0" src="<?php echo MEDIA_PATH; ?>images/settings_icon.png"  title="Widgets" />
-                    </a>                     					
-                    <!-- Added by sapplica Here we are displaying the recently clicked tabs by the user -->					
+                    </a>
+                    <!-- Added by sapplica Here we are displaying the recently clicked tabs by the user -->
 						<?php $this->recentlyviewed(); ?>
 				</div>
-                
+
 		</div>
 		<?php } ?>
 		</div>
@@ -55,14 +55,14 @@
 
 <!-- website tour html START -->
 <div id="tourcontrols" class="tourcontrols" style="display:none;">
-	
-    <p>Welcome to <?php echo APPLICATION_NAME; ?> !!
+
+    <p><b>Welcome to <?php echo APPLICATION_NAME; ?>!</b>
     	<br />
-    	Here for the first time?
+    	It is the news and information portal of all BreadTalk employees.
     	<br />
-    	For the best Sentrifugo tour experience, please maximize your browser.
+			Take time to browse the different sections of your site which was customized to meet your needs. Enjoy your navigation.
     </p>
-	<span class="button" id="activatetour">Start the tour<b class="start-tour-icon"></b></span>
+	<span align="center" class="button" id="activatetour">Start the tour<b class="start-tour-icon"></b></span>
 	<div class="nav">
 		<span class="button" id="prevstep" style="display:none;"><b>&lsaquo;</b> Previous</span>
 		<span class="button" id="nextstep" style="display:none;">Next <b>&rsaquo;</b></span>
@@ -84,38 +84,38 @@ $(document).ready(function() {
  /* Making window responsive*/
  	var complete_empwidth = $('.emp-screen-view').width();
 	$('#displayimg').css("width", "150");
-	$('#personalDetailsDiv').css("width", (complete_empwidth-(152)));	
-		
+	$('#personalDetailsDiv').css("width", (complete_empwidth-(152)));
+
 	 function checkempWidth() {
-        var complete_empwidth = $('.emp-screen-view').width();		
+        var complete_empwidth = $('.emp-screen-view').width();
 		$('#displayimg').css("width", "150");
-		$('#personalDetailsDiv').css("width", (complete_empwidth-(152)));		
+		$('#personalDetailsDiv').css("width", (complete_empwidth-(152)));
     }
-	
+
 	/* Making window responsive*/
  	var complete_width = $('.poc-ui-data-control').width();
 	$('.left-block-ui-data').css("width", "230");
-	$('.right-block-data').css("width", (complete_width-(263)));	
-		
+	$('.right-block-data').css("width", (complete_width-(263)));
+
 	 function checkWidth() {
-        var complete_width = $('.poc-ui-data-control').width();		
+        var complete_width = $('.poc-ui-data-control').width();
 		$('.left-block-ui-data').css("width", "230");
-		$('.right-block-data').css("width", (complete_width-(263)));		
+		$('.right-block-data').css("width", (complete_width-(263)));
     }
-	
-	
+
+
 	function checknew1Width() {
-        var complete_width = $('.short-ui-full-1').width();		
+        var complete_width = $('.short-ui-full-1').width();
 		$('.short-ui-full-1 label').css("width", "160");
-		$('.short-ui-full-1 .division1').css("width", (complete_width-(190)));	
+		$('.short-ui-full-1 .division1').css("width", (complete_width-(190)));
     }
 
 	/* Making window responsive*/
  	var complete_width = $('.short-ui-full-1').width();
 	$('.short-ui-full-1 label').css("width", "160");
-	$('.short-ui-full-1 .division1').css("width", (complete_width-(190)));	
-	
-	 
+	$('.short-ui-full-1 .division1').css("width", (complete_width-(190)));
+
+
 	$(window).resize(function() {
 		checkWidth();
 		checkempWidth();
@@ -127,7 +127,7 @@ $(document).ready(function() {
 		If action name is not viewsettings.
 	*/
 	<?php if($actionName !='viewsettings') { ?>
-	<?php 
+	<?php
 				$auth = Zend_Auth::getInstance();
 				if($auth->hasIdentity())
 				{
@@ -176,13 +176,13 @@ $(document).ready(function() {
 			$.blockUI({ width:'50px',message: $("#spinner").html() });
 			window.location.href = base_url+'/expenses/expenses';
 		});
-		
+
 		$( "#main_parent_"+<?php echo ASSETS ; ?> ).click(function() {
 			$('.wrapperdivright').html('');
 			$.blockUI({ width:'50px',message: $("#spinner").html() });
 			window.location.href = base_url+'/assets/assets';
 		});
-		
+
 		$( "#main_parent_"+<?php echo SERVICEDESK ; ?> ).click(function() {
 			$('.wrapperdivright').html('');
 			$.blockUI({ width:'50px',message: $("#spinner").html() });
@@ -192,7 +192,7 @@ $(document).ready(function() {
 				window.location.href = base_url+'/servicedeskconf';
 			<?php } ?>
 		});
-		
+
 		$( "#main_parent_"+<?php echo DISCIPLINARY ; ?> ).click(function() {
 			var dismethod = '<?php echo ($loginuserGroup == MANAGEMENT_GROUP || $loginuserRole==SUPERADMINROLE)?'disciplinaryincident':'disciplinarymyincidents';?>';
 			$('.wrapperdivright').html('');
@@ -206,9 +206,9 @@ $(document).ready(function() {
 			$.blockUI({ width:'50px',message: $("#spinner").html() });
 			window.location.href = base_url+'/'+appmethod+'/';
 		});
-		
+
 	<?php }?>
-	
+
 	<?php if($actionName =='viewsettings') { ?>
 		$('.wrapperdivright').height($('#sidebar-wrapper').height());
 	<?php }?>
@@ -216,11 +216,11 @@ $(document).ready(function() {
 		End
 	*/
 	$('ul.menu.flex').flexMenu();
-});	
+});
 
 
 </script>
-<?php 
+<?php
 /***
 *** check if the user has logged in for the first time and enable the script
 ***/
@@ -249,19 +249,19 @@ $(document).ready(function(){
    var employee_links = "";
    employee_links += "<div class='power-tip'><ul>";
    employee_links += "<li><a href='"+base_url+"/reports/employeereport'>Employees</a></li>";
-   employee_links += "</ul></div>";     
-   
+   employee_links += "</ul></div>";
+
    var leavereports_links = "";
    leavereports_links += "<div class='power-tip'><ul>";
    leavereports_links += "<li><a href='"+base_url+"/reports/leavesreport'>Employee Leaves Summary</a></li>";
    leavereports_links += "<li><a href='"+base_url+"/reports/leavemanagementreport'>Leave Management Options</a></li>";
    leavereports_links += "</ul></div>";
-   
+
    var holidaymanagement_links = "";
    holidaymanagement_links += "<div class='power-tip'><ul>";
    holidaymanagement_links += "<li><a href='"+base_url+"/reports/holidaygroupreports'>Holiday Groups & Holidays</a></li>";
    holidaymanagement_links += "</ul></div>";
-   
+
    var requisition_links = "";
    requisition_links += "<div class='power-tip'><ul>";
    requisition_links += "<li><a href='"+base_url+"/reports/requisitionstatusreport'>Recruitments</a></li>";
@@ -280,7 +280,7 @@ $(document).ready(function(){
    backgroundcheck_links += "<li><a href='"+base_url+"/reports/agencylistreport'>Background Check Agencies</a></li>";
    backgroundcheck_links += "<li><a href='"+base_url+"/reports/empscreening'>Employee / Candidate screening</a></li>";
    backgroundcheck_links += "</ul></div>";
-   
+
    var bussinessunit_links = "";
    bussinessunit_links += "<div class='power-tip'><ul>";
    bussinessunit_links += "<li><a href='"+base_url+"/reports/businessunits'>Business Units</a></li>";
@@ -296,16 +296,16 @@ $(document).ready(function(){
    performance_links += "<div class='power-tip'><ul>";
    performance_links += "<li><a href='"+base_url+"/reports/performancereport'>Employee Appraisals</a></li>";
    performance_links += "</ul></div>";
-   
+
    var timemanagement_links = "";
    timemanagement_links += "<div class='power-tip'><ul>";
    timemanagement_links += "<li><a href='"+base_url+"/timemanagement/reports/tmreport'>Time Management Analytics</a></li>";
-   timemanagement_links += "</ul></div>";    
-       
+   timemanagement_links += "</ul></div>";
+
         tooltip_helper('usermanagement_rpt_div',usermanage_links);
         tooltip_helper('employees_rpt_div',employee_links);
         tooltip_helper('leaves_rpt_div',leavereports_links);
-        tooltip_helper('holiday_rpt_div',holidaymanagement_links);       
+        tooltip_helper('holiday_rpt_div',holidaymanagement_links);
         tooltip_helper('requisition_rpt_div',requisition_links);
         tooltip_helper('logs_rpt_div',log_links);
         tooltip_helper('background_rpt_div',backgroundcheck_links);
@@ -313,7 +313,7 @@ $(document).ready(function(){
         tooltip_helper('servicedesk_rpt_div',servicedesk_links);
         tooltip_helper('performance_rpt_div',performance_links);
         tooltip_helper('timemanagement_rpt_div',timemanagement_links);
-        
+
 });
 function tooltip_helper(div_id,links)
 {
@@ -327,10 +327,10 @@ function tooltip_helper(div_id,links)
     });
 }
 </script>
-<?php 
+<?php
 }
 ?>
-<?php 
+<?php
 /***
 *** end of the first time user login check
 ***/
@@ -339,24 +339,24 @@ function tooltip_helper(div_id,links)
 <link rel="stylesheet" type="text/css" href="<?php echo MEDIA_PATH; ?>css/loginstyle.css" />
 <footer>
 	<div class="copytxt">
-        	<div class="copy-center"><span class="fltleft">&copy; BreadTalk, <?php echo date('Y');?></span><span class="fltright"></span></div>	
+        	<div class="copy-center"><span class="fltleft">&copy; BreadTalk, <?php echo date('Y');?></span><span class="fltright"></span></div>
          </div>
-</footer> 
+</footer>
 <?php } ?>
-<?php 
+<?php
 $clients=CLIENTS;
 if(Zend_Registry::get( 'tm_role' ) == 'Employee')
 {
 	echo "<script type='text/javascript'>
 	$(document).ready(function() {
- 
+
 		$('#$clients').parent().hide();
 	});
 	</script>";
-	
+
 }?>
 <!--
-For the working of popups in logmanager, 
+For the working of popups in logmanager,
 the code from logmanager/index.phtml has been moved here
 because json file and html file both are same.
 Dated: 27-02-2014
@@ -385,19 +385,19 @@ if ($('#upload_custom_div_profile').length)
 	var btnUpload = $('#upload_custom_div_profile');
     new AjaxUpload(btnUpload, {
     action :  base_url+'/dashboard/uploadpreview',
-	name   : 'profile_photo',  //we can rename it 
+	name   : 'profile_photo',  //we can rename it
 	dataType: 'json',
 	onSubmit: function(file,ext){
 	if($(".uploaderror_profile").is(":visible"))
 	 $(".uploaderror_profile").hide();
 	  $("#loaderimgprofileedit").show();
-									 
+
 	},
 	onComplete: function(file, response){
 	    var result = JSON.parse(response);
       	if(result.result == 'success')
 		{
-		    
+
 			$('.chg-img_profile').show();
 			$("#uploadimagepathedit").val(result.img);
 			$('.chg-img_profile').html('<img src="<?php echo DOMAIN; ?>public/uploads/preview/'+result.img+'" width="50" height="50"/>');
@@ -410,14 +410,14 @@ if ($('#upload_custom_div_profile').length)
 			if(result.msg)
 			 $('.uploaderror_profile').html(result.msg);
 			else
-             $('.uploaderror_profile').html("Please choose different file."); 			
+             $('.uploaderror_profile').html("Please choose different file.");
 			$("#loaderimgprofileedit").hide();
 			setTimeout(function()
 			{
 			$('.uploaderror_profile').fadeOut('slow');
 			},3000);
 		}
-		}	
+		}
 	},'json');
 }
 </script>

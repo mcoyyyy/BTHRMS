@@ -1,7 +1,7 @@
-/********************************************************************************* 
+/*********************************************************************************
  *  This file is part of Sentrifugo.
  *  Copyright (C) 2014 Sapplica
- *   
+ *
  *  Sentrifugo is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -140,7 +140,7 @@
 						"position":"TL",
 						"time":5000
 					};
-					configArr.push(obj);					
+					configArr.push(obj);
 				}
 				if($('.tour_organization').attr('class'))
 				{
@@ -238,7 +238,7 @@
 						};
 					configArr.push(obj);
 				}
-				
+
 			     if($('.tour_logs').attr('class'))
 				{
 					var obj = {
@@ -251,7 +251,7 @@
 					};
 					configArr.push(obj);
 				}
-			    
+
 				var config = configArr,
 				//define if steps should change automatically
 				autoplay	= false,
@@ -261,23 +261,23 @@
 				step		= 0,
 				//total number of steps
 				total_steps	= config.length;
-				
+
 				/***
 				*** check if the user has logged in for the first time and enable the script
 				***/
 				take_tour_flag = $('#take-tour-flag').val();
 				if(take_tour_flag == 0){
 					showOverlay();
-					showControls();					
+					showControls();
 				}
 				/***
 				*** end of the first time user login check
-				***/	
+				***/
 				/*
 				we can restart or stop the tour,
 				and also navigate through the steps
 				*/
-				
+
 				$('#activatetour').click(function(){startTour();});
 				$('#canceltour').click(function(){endTour();});
 				$('#endtour').click(function(){endTour();});
@@ -294,7 +294,7 @@
 					$('#separator-tour').show();
 					nextStep();
 				}
-				
+
 				function nextStep(){
 					if(!autoplay){
 						if(step > 0)
@@ -304,8 +304,8 @@
 						if(step == total_steps-1)
 							$('#nextstep').hide();
 						else
-							$('#nextstep').show();	
-					}	
+							$('#nextstep').show();
+					}
 					if(step >= total_steps){
 						//if last step then end tour
 						endTour();
@@ -314,7 +314,7 @@
 					++step;
 					showTooltip();
 				}
-				
+
 				function prevStep(){
 					if(!autoplay){
 						if(step > 2)
@@ -323,13 +323,13 @@
 							$('#prevstep').hide();
 						if(step == total_steps)
 							$('#nextstep').show();
-					}		
+					}
 					if(step <= 1)
 						return false;
 					--step;
 					showTooltip();
 				}
-				
+
 				function endTour(){
 					step = 0;
 					if(autoplay) clearTimeout(showtime);
@@ -337,28 +337,28 @@
 					hideControls();
 					hideOverlay();
 				}
-				
+
 				function restartTour(){
 					step = 0;
 					$('#activatetour').hide();
 					if(autoplay) clearTimeout(showtime);
 					nextStep();
 				}
-				
+
 				function showTooltip(){
 					//remove current tooltip
 					removeTooltip();
-					
+
 					var step_config	= config[step-1];
 					var $elem = $('.' + step_config.name);
 					$elem.css('','');
 
 					if(autoplay)
 						showtime	= setTimeout(nextStep,step_config.time);
-					
+
 					var bgcolor 		= step_config.bgcolor;
 					var color	 		= step_config.color;
-					
+
 					var $tooltip		= $('<div>',{
 						'id'			: 'tour_tooltip',
 						'class' 	: 'tourtooltip',
@@ -368,14 +368,14 @@
 						'background-color'	: bgcolor,
 						'color'				: color
 					});
-					
+
 					//position the tooltip correctly:
-					
+
 					//the css properties the tooltip should have
 					var properties		= {};
-					
+
 					var tip_position 	= step_config.position;
-					
+
 					//append the tooltip but hide it
 					$('BODY').prepend($tooltip);
 					//console.log($elem);
@@ -384,18 +384,18 @@
 					var e_h	= ($elem)?$elem.outerHeight():200;
 					var e_l	= ($elem)?$elem.offset().left:200;
 					var e_t = ($elem)?($elem.offset().top-5):100;
-					
-					
+
+
 					switch(tip_position){
 						case 'TL'	:
 							if(!$('.'+step_config.name).visible(true))
 							{
 								var temp = $('.simply-scroll-clip');
-							
+
 								temp.interval = setInterval(function() {
-									if (temp[0]['scrollLeft'] >= 0) {										
+									if (temp[0]['scrollLeft'] >= 0) {
 										temp[0]['scrollLeft'] -= 6;
-									}									
+									}
 								},5);
 								//if($elem.offset().left < 0)
 									e_l	= $elem.offset().left + temp[0]['scrollLeft'];
@@ -465,16 +465,16 @@
 							break;
 						case 'R'	:
 							if(!$('.'+step_config.name).visible(true))
-							{								
-								var temp = $('.simply-scroll-clip');									
-								temp.interval = setInterval(function() {			
+							{
+								var temp = $('.simply-scroll-clip');
+								temp.interval = setInterval(function() {
 									if (temp[0]['scrollLeft'] < temp[0]['scrollLeftMax']) {
 										temp[0]['scrollLeft'] += 5;
-									}								
+									}
 								},5);
-								//console.log($elem.offset().left+" >> "+temp[0]['scrollLeftMax']);								
+								//console.log($elem.offset().left+" >> "+temp[0]['scrollLeftMax']);
 								//if($elem.offset().left > 1000)
-								e_l	= $elem.offset().left-temp[0]['scrollLeftMax'];								
+								e_l	= $elem.offset().left-temp[0]['scrollLeftMax'];
 							}
 							properties = {
 								'left'	: e_l - $tooltip.width() + 'px',
@@ -491,23 +491,23 @@
 							break;
 						case 'L'	:
 							if(!$('.'+step_config.name).visible(true))
-							{						
-								var temp = $('.simply-scroll-clip');	
+							{
+								var temp = $('.simply-scroll-clip');
 								temp.interval = setInterval(function() {
 									if (temp[0]['scrollRight'] > temp[0]['scrollRightMax']) {
 										temp[0]['scrollRight'] -= 5;
 									}
-								},5);								
+								},5);
 							}
 							properties = {//e_l + e_w + 'px'
-								'left'	: e_l + e_w + 'px',//e_w + 13 + 'px', 
+								'left'	: e_l + e_w + 'px',//e_w + 13 + 'px',
 								'top'	: e_t + e_h/2 - $tooltip.height()/2 + 'px'
 							};
 							$tooltip.find('span.tourtooltip_arrow').addClass('tourtooltip_arrow_L');
 							break;
 					}
-					
-					
+
+
 					/*
 					if the element is not in the viewport
 					we scroll to it before displaying the tooltip
@@ -516,15 +516,15 @@
 					var w_b = $(window).scrollTop() + $(window).height();
 					//get the boundaries of the element + tooltip
 					var b_t = parseFloat(properties.top,10);
-					
+
 					if(e_t < b_t)
 						b_t = e_t;
-					
+
 					var b_b = parseFloat(properties.top,10) + $tooltip.height();
 					if((e_t + e_h) > b_b)
 						b_b = e_t + e_h;
-						
-					
+
+
 					if((b_t < w_t || b_t > w_b) || (b_b < w_t || b_b > w_b)){
 						$('html, body').stop()
 						.animate({scrollTop: b_t}, 500, 'easeInOutExpo', function(){
@@ -542,19 +542,19 @@
 					//show the new tooltip
 						$tooltip.css(properties).show();
 					}
-					
+
 					var w_tL	= $(window).scrollLeft();
 					var w_bL = $(window).scrollLeft() + $(window).width();
 					var b_tL = parseFloat(properties.left,10);
 					if(e_l < b_tL)
-						b_tL = e_l;	
+						b_tL = e_l;
 					var b_bL = parseFloat(properties.left,10) + $tooltip.width();
 					if((e_l + e_w) > b_bL)
 						b_b = e_l + e_w;
-					
+
 					if((b_tL < w_tL || b_tL > w_bL) || (b_bL < w_tL || b_b > w_bL))
 					{
-						$('html, body').stop()						
+						$('html, body').stop()
 						.animate({scrollLeft: b_tL}, 500, 'easeInOutExpo', function(){
 							//need to reset the timeout because of the animation delay
 							if(autoplay){
@@ -565,17 +565,17 @@
 							$tooltip.css(properties).show();
 						});
 					}else
-					{						
+					{
 						//show the new tooltip
 						$tooltip.css(properties).show();
 					}
-					
+
 				}
-				
+
 				function removeTooltip(){
 					$('#tour_tooltip').remove();
 				}
-				
+
 				function showControls(){
 					$('#tourcontrols').css('display','block');
 					$idsArr = ['activatetour','restarttour','separator-tour','endtour','canceltour','nextstep','prevstep'];
@@ -585,16 +585,16 @@
 					});
 					$('#tourcontrols').animate({'right':'30px'},500);
 				}
-				
+
 				function hideControls(){
 					$('#tourcontrols').css('display','none');
 				}
-				
+
 				function showOverlay(){
 					var $overlay	= '<div id="tour_overlay" class="overlay"></div>';
 					$('BODY').prepend($overlay);
 				}
-				
+
 				function hideOverlay(){
 					$('#tour_overlay').remove();
 				}
@@ -602,23 +602,23 @@
 				/***
 				*** check if the user has logged in for the first time and enable the script
 				***/
-				if(take_tour_flag == 0){
+				if(take_tour_flag == 1){
 					$('#endtour,#canceltour').click(function(){
 						 jQuery.ajax({
 								type: "POST",
 								url: base_url+'/index/sessiontour',
 								datatype: 'json',
-								success: function(responce) {					
-										
+								success: function(responce) {
+
 								},
 							});
 					});
 				}
-				
-				$('#tourLink').click(function(){ 
+
+				$('#tourLink').click(function(){
 					setdisplaymenu('tour');
 					showOverlay();
-					showControls();					
+					showControls();
 				});
-									
+
 			});

@@ -1,2 +1,3 @@
 # btHRMS
-HRMS created using opensourced software Sentrifugo
+Created an HRMS software using the opensource system Sentrifugo.
+

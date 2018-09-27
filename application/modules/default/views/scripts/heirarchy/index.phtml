@@ -1,8 +1,8 @@
-<?php 
-/********************************************************************************* 
+<?php
+/*********************************************************************************
  *  This file is part of Sentrifugo.
  *  Copyright (C) 2014 Sapplica
- *   
+ *
  *  Sentrifugo is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -20,17 +20,17 @@
  ********************************************************************************/
 ?>
 
-<?php if(empty($this->orgData) && empty($this->allEmpdata)){ ?>	
-		<div class="ml-alert-1-info"><div class="style-1-icon info"></div>Organization information and employees are not added yet<!--to configure organization hierarchy-->. </div>	
+<?php if(empty($this->orgData) && empty($this->allEmpdata)){ ?>
+		<div class="ml-alert-1-info"><div class="style-1-icon info"></div>Organization information and employees are not added yet<!--to configure organization hierarchy-->. </div>
 <?php }else if(empty($this->allEmpdata)){ ?>
-		<div class="ml-alert-1-info"><div class="style-1-icon info"></div>Employees are not added yet<!--to configure organization hierarchy-->. </div>	
+		<div class="ml-alert-1-info"><div class="style-1-icon info"></div>Employees are not added yet<!--to configure organization hierarchy-->. </div>
 <?php } else if(empty($this->orgData)){ ?>
-		<div class="ml-alert-1-info"><div class="style-1-icon info"></div>Organization Information is not added yet<!--to configure organization hierarchy-->. </div>	
-<?php } 
+		<div class="ml-alert-1-info"><div class="style-1-icon info"></div>Organization Information is not added yet<!--to configure organization hierarchy-->. </div>
+<?php }
 else if($this->output != '') { ?>
  <style>
-	#ifrDiv{ z-index:1000;position:absolute;border:1px solid red;top:200px;left:200px;}	
-  </style>  
+	#ifrDiv{ z-index:1000;position:absolute;border:1px solid red;top:200px;left:200px;}
+  </style>
 <span id="error_message"></span>
 <div id = "grayout" ></div>
 
@@ -41,7 +41,7 @@ jQuery(document).ready(function() {
 	  alwaysVisible: false,
 	  start: 'left',
 	  position: 'bottom',
-	}).css({ background: '#ccc', paddingBottom: '10px' }); 
+	}).css({ background: '#ccc', paddingBottom: '10px' });
 	$("div.node").each(function(){
 	   var text = $(this).text();
 	   text = $.trim(text);
@@ -55,15 +55,15 @@ jQuery(document).ready(function() {
  -->
 
 <br/>
-<h1><center>ADMINISTRATION HIERARCY</center></h1>
-<center><img src="<?php echo DOMAIN;?>public/media/images/org-hierarchy-admin.png" alt="Organizational Hierarcy" width="73%"></center>
+<h1><center>ADMINISTRATION HIERARCHY</center></h1>
+<center><img src="<?php echo DOMAIN;?>public/media/images/org-hierarchy-admin.png" alt="Organizational Hierarchy" width="73%"></center>
 <h1><center>RETAIL HIERARCHY</center></h1>
 <img src="<?php echo DOMAIN;?>public/media/images/org-hierarchy-retail.png" alt="Organizational Hierarcy" width="37%">
 
 
 <div id="addlist"></div>
 
-<?php } else { ?> 
+<?php } else { ?>
 <div class="ml-alert-1-info"><div class="style-1-icon info"></div>
 		Employees are not added yet.
 </div>

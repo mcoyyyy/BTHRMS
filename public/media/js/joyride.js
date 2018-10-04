@@ -602,7 +602,7 @@
 				/***
 				*** check if the user has logged in for the first time and enable the script
 				***/
-				if(take_tour_flag == 1){
+				if(take_tour_flag == 0){
 					$('#endtour,#canceltour').click(function(){
 						 jQuery.ajax({
 								type: "POST",

@@ -28,7 +28,7 @@ class Default_ErrorController extends Zend_Controller_Action
         
         if (!$errors) {
             //this is for error that coming from accesscontrol.
-            $this->view->message = '<div class="page-not-authorized"><div class="div-authorized"></div><p class="sry-text">You are not authorized to access this page. <!--HRMS MODIFIED-->  <a href= "'.BASE_URL.'exit/exitproc">Click here to redirect. </a> </p></div>';
+            $this->view->message = '<div class="page-not-authorized"><div class="div-authorized"></div><p class="sry-text">You are not authorized to access this page.</p></div>';
             return;
         }
         

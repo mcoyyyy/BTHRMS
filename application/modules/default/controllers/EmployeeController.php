@@ -1012,9 +1012,7 @@ class Default_EmployeeController extends Zend_Controller_Action
 		if(sapp_Global::_checkprivileges(PREFIX,$loginuserGroup,$loginuserRole,'add') == 'Yes'){
 			array_push($popConfigPermission,'prefix');
 		}
-
-
-        if(sapp_Global::_checkprivileges(PREFIX,$loginuserGroup,$loginuserRole,'edit') == 'Yes'){
+                if(sapp_Global::_checkprivileges(PREFIX,$loginuserGroup,$loginuserRole,'edit') == 'Yes'){
 			array_push($popConfigPermission,'identitycodes');
 		}
 		if(sapp_Global::_checkprivileges(EMPLOYMENTSTATUS,$loginuserGroup,$loginuserRole,'add') == 'Yes'){
@@ -1765,9 +1763,6 @@ public function editappraisal($id,$performanceflag,$ff_flag)
 	}
 
 
-
-
-
 	public function save($employeeform)
 	{
 		$emproleStr='';$roleArr=array();$empgroupStr='';
@@ -1796,26 +1791,10 @@ public function editappraisal($id,$performanceflag,$ff_flag)
 		$user_id = $this->_getParam('user_id',null);
 		$prefix_id = $this->_getParam('prefix_id',null);
 		$extension_number = $this->_getParam('extension_number',null);
-
 		$office_number = $this->_request->getParam('office_number',null);
 		$office_faxnumber = $this->_request->getParam('office_faxnumber',null);
 		$date_of_joining = $this->_request->getParam('date_of_joining',null);
 		$date_of_joining = sapp_Global::change_date($date_of_joining,'database');
-
-
-        //HRMS MODIFIED
-        $complete_address = $this->_request->getParam('complete_address',null);
-        $emergency_contact = $this->_request->getParam('emergency_contact',null);
-        $last_attendance = $this->_request->getParam('last_attendance',null);
-        $government_sss = $this->_request->getParam('government_sss',null);
-        $government_tin = $this->_request->getParam('government_tin',null);
-        $government_philhealth = $this->_request->getParam('government_philhealth',null);
-        $government_pagibig = $this->_request->getParam('government_pagibig',null);
-        $gender_official = $this->_request->getParam('gender_official',null);
-        $marital_official = $this->_request->getParam('marital_official',null);
-        $nationality_official = $this->_request->getParam('nationality_official',null);
-
-
 		$emp_id = '';
 		$employeeNumId = trim($this->_getParam('employeeNumId',null));
 		//employee id
@@ -1993,28 +1972,7 @@ public function editappraisal($id,$performanceflag,$ff_flag)
                                 'date_of_leaving'=>($date_of_leaving!=''?$date_of_leaving:NULL),
                                 'years_exp'=>($years_exp=='')?null:$years_exp,
                                 'modifiedby'=>$loginUserId,
-                                'modifieddate'=>gmdate("Y-m-d H:i:s"),
-
-                                //HRMS MODIFIED
-                                'complete_address'=>($complete_address!=''?$complete_address:NULL),
-                                'emergency_contact'=>($emergency_contact!=''?$emergency_contact:NULL),
-                                'last_attendance'=>($last_attendance!=''?$last_attendance:NULL),
-                                'government_sss'=>($government_sss!=''?$government_sss:NULL),
-                                'government_tin'=>($government_tin!=''?$government_tin:NULL),
-                                'government_philhealth'=>($government_philhealth!=''?$government_philhealth:NULL),
-                                'government_pagibig'=>($government_pagibig!=''?$government_pagibig:NULL),
-
-      /*                          'medhistory_cbc'=>($medhistory_cbc!=''?$medhistory_cbc:NULL),
-                                'medhistory_urinalysis'=>($medhistory_urinalysis!=''?$medhistory_urinalysis:NULL),*/
-                                /*'medhistory_chestxray'=>($medhistory_chestxray!=''?$medhistory_chestxray:NULL),
-                                'medhistory_physicalexam'=>($medhistory_physicalexam!=''?$medhistory_physicalexam:NULL),
-                                'medhistory_hepab'=>($medhistory_hepab!=''?$medhistory_hepab:NULL),
-                                'medhistory_drugtest'=>($medhistory_drugtest!=''?$medhistory_drugtest:NULL)*/
-
-                                'marital_official'=>($marital_official!=''?$marital_official:NULL),
-                                'gender_official'=>($gender_official!=''?$gender_official:NULL),
-                                'nationality_official'=>($nationality_official!=''?$nationality_official:NULL)
-
+                                'modifieddate'=>gmdate("Y-m-d H:i:s")
 							);
 
 				if($id == '')
@@ -2927,10 +2885,5 @@ public function editappraisal($id,$performanceflag,$ff_flag)
     	$userdetails = $employeeModel->getEmp_from_summary($userid);
     	$this->view->userdetails = $userdetails;
     }
-
-
-
-
-
         
 }//end of class

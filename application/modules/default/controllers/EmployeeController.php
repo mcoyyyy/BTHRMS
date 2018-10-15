@@ -1014,7 +1014,7 @@ class Default_EmployeeController extends Zend_Controller_Action
 		}
 
 
-                if(sapp_Global::_checkprivileges(PREFIX,$loginuserGroup,$loginuserRole,'edit') == 'Yes'){
+        if(sapp_Global::_checkprivileges(PREFIX,$loginuserGroup,$loginuserRole,'edit') == 'Yes'){
 			array_push($popConfigPermission,'identitycodes');
 		}
 		if(sapp_Global::_checkprivileges(EMPLOYMENTSTATUS,$loginuserGroup,$loginuserRole,'add') == 'Yes'){
@@ -2004,7 +2004,7 @@ public function editappraisal($id,$performanceflag,$ff_flag)
                                 'government_philhealth'=>($government_philhealth!=''?$government_philhealth:NULL),
                                 'government_pagibig'=>($government_pagibig!=''?$government_pagibig:NULL),
 
-								/*'medhistory_cbc'=>($medhistory_cbc!=''?$medhistory_cbc:NULL),
+      /*                          'medhistory_cbc'=>($medhistory_cbc!=''?$medhistory_cbc:NULL),
                                 'medhistory_urinalysis'=>($medhistory_urinalysis!=''?$medhistory_urinalysis:NULL),*/
                                 /*'medhistory_chestxray'=>($medhistory_chestxray!=''?$medhistory_chestxray:NULL),
                                 'medhistory_physicalexam'=>($medhistory_physicalexam!=''?$medhistory_physicalexam:NULL),

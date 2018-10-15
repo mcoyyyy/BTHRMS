@@ -20,8 +20,6 @@
  ********************************************************************************/
 ?>
 
-
-
 <?php 
 
 
@@ -55,8 +53,6 @@ $data = $this->data;
 				sapp_Helper::viewBody('alt',$this->form->prefix_id->getLabel(),(!sapp_Helper::SappEmpty($this->data['prefix_id']))?$this->data['prefix_id']:"...",$this->form->firstname->getLabel(),(!sapp_Helper::SappEmpty($this->form->firstname->getValue()))?$this->form->firstname->getValue():"...");
 				
 				sapp_Helper::viewBody('nor',$this->form->lastname->getLabel(),(!sapp_Helper::SappEmpty($this->form->lastname->getValue()))?$this->form->lastname->getValue():"...",$this->form->modeofentry->getLabel(),(!sapp_Helper::SappEmpty($this->form->modeofentry->getValue()))?$this->form->modeofentry->getValue():"...");
-
-    sapp_Helper::viewBody('nor',$this->form->gender_official->getLabel(),(!sapp_Helper::SappEmpty($this->form->gender_official->getValue()))?$this->form->gender_official->getValue():"...",$this->form->marital_official->getLabel(),(!sapp_Helper::SappEmpty($this->form->marital_official->getValue()))?$this->form->marital_official->getValue():"..."   );
 				
 ?>				
 			    <div  id="iddiv_canditatename">				 
@@ -76,6 +72,7 @@ $data = $this->data;
 				<div  id="iddiv_referredby" >
                 <?php
                 sapp_Helper::viewBody('alt',$this->form->candidatereferredby->getLabel(),(!sapp_Helper::SappEmpty($this->form->candidatereferredby->getValue()))?$this->form->candidatereferredby->getValue():"...",'','');
+ 
                 ?>				
                  </div> 
                 
@@ -85,22 +82,12 @@ $data = $this->data;
  
                 ?>	
 				 </div>
-
-
-
-
-
-                <?php 
-
-                sapp_Helper::viewBody('alt','Date of Birth',(!empty($dob))?$this->form->dob->getValue():"...",'Blood Group',(!empty($this->data[0]['bloodgroup']))?$this->data[0]['bloodgroup']:"...");
-                ?>
+				              
+				 
                                 
                 <?php
-
 				sapp_Helper::viewBody('nor',$this->form->emprole->getLabel(),(!sapp_Helper::SappEmpty( $this->data['emprole']))?  $this->data['emprole']:"..."	,$this->form->emailaddress->getLabel(),(!sapp_Helper::SappEmpty($this->form->emailaddress->getValue()))? $this->form->emailaddress->getValue():"...");
 				
-/*                sapp_Helper::viewBody('alt','Date of Birth',(!empty($dob))?$this->form->dob->getValue():"...",'Blood Group',(!empty($this->data[0]['bloodgroup']))?$this->data[0]['bloodgroup']:"...");*/
-
 			 	
 			 if($this->data['is_orghead'] == 0)
 				{ 
@@ -118,26 +105,12 @@ $data = $this->data;
 				if($this->data['is_orghead'] == 0)
 				{ 
 				sapp_Helper::viewBody('nor','Date of Leaving',(!sapp_Helper::SappEmpty($this->form->date_of_leaving->getValue()))? $this->form->date_of_leaving->getValue():"..."	,'','');
-                }
-
-
-                sapp_Helper::viewBody('alt','Years of Experience',(!sapp_Helper::SappEmpty($this->form->years_exp->getValue()))? $this->form->years_exp->getValue():"..."	,$this->form->office_number->getLabel(),(!sapp_Helper::SappEmpty($this->form->office_number->getValue()))?$this->form->office_number->getValue():"...");
+				}
+				sapp_Helper::viewBody('alt','Years of Experience',(!sapp_Helper::SappEmpty($this->form->years_exp->getValue()))? $this->form->years_exp->getValue():"..."	,$this->form->office_number->getLabel(),(!sapp_Helper::SappEmpty($this->form->office_number->getValue()))?$this->form->office_number->getValue():"...");
 				sapp_Helper::viewBody('nor',$this->form->extension_number->getLabel(),(!sapp_Helper::SappEmpty($this->form->extension_number->getValue()))?$this->form->extension_number->getValue():"...",$this->form->office_faxnumber->getLabel(),(!sapp_Helper::SappEmpty($this->form->office_faxnumber->getValue()))?$this->form->office_faxnumber->getValue():"..."	);
-
-                sapp_Helper::viewBody('nor',$this->form->emergency_contact->getLabel(),(!sapp_Helper::SappEmpty($this->form->emergency_contact->getValue()))?$this->form->emergency_contact->getValue():"...",$this->form->complete_address->getLabel(),(!sapp_Helper::SappEmpty($this->form->complete_address->getValue()))?$this->form->complete_address->getValue():"..."   );
-
-                sapp_Helper::viewBody('nor',$this->form->government_sss->getLabel(),(!sapp_Helper::SappEmpty($this->form->government_sss->getValue()))?$this->form->government_sss->getValue():"...",$this->form->government_tin->getLabel(),(!sapp_Helper::SappEmpty($this->form->government_tin->getValue()))?$this->form->government_tin->getValue():"..."   );
-
-                sapp_Helper::viewBody('nor',$this->form->government_philhealth->getLabel(),(!sapp_Helper::SappEmpty($this->form->government_philhealth->getValue()))?$this->form->government_philhealth->getValue():"...",$this->form->government_pagibig->getLabel(),(!sapp_Helper::SappEmpty($this->form->government_pagibig->getValue()))?$this->form->government_pagibig->getValue():"..."   );
-
-                sapp_Helper::viewBody('nor',$this->form->medhistory_cbc->getLabel(),(!sapp_Helper::SappEmpty($this->form->medhistory_cbc->getValue()))?$this->form->medhistory_cbc->getValue():"...",$this->form->medhistory_cbc->getLabel(),(!sapp_Helper::SappEmpty($this->form->medhistory_cbc->getValue()))?$this->form->medhistory_cbc->getValue():"..."   );
-
-
-
 				
 				sapp_Helper::viewFooter();
 			   ?>
-
 </div>	</div>
 
 
@@ -208,5 +181,3 @@ $(document).ready(function(){
 });//end of ready function
 </script>
 <?php } ?>
-
-        <button type="button" title="Generate Report">Generate Report</button>

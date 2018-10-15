@@ -1765,11 +1765,6 @@ class Default_MyemployeesController extends Zend_Controller_Action
 		$office_faxnumber = $this->_request->getParam('office_faxnumber',null);
 		$date_of_joining = $this->_request->getParam('date_of_joining',null);
 		$date_of_joining = sapp_Global::change_date($date_of_joining,'database');
-
-        //HRMS MODIFIED
-        $complete_address = $this->_request->getParam('complete_address',null);
-        $emergency_contact = $this->_request->getParam('emergency_contact',null);
-        $last_attendance = $this->_request->getParam('last_attendance',null);
 		
 		$emp_id = '';
 		$employeeNumId = trim($this->_getParam('employeeNumId',null));
@@ -1910,12 +1905,7 @@ class Default_MyemployeesController extends Zend_Controller_Action
                                     'date_of_leaving'=>($date_of_leaving!=''?$date_of_leaving:NULL),
                                     'years_exp'=>($years_exp=='')?null:$years_exp,
                                     'modifiedby'=>$loginUserId,				
-                                    'modifieddate'=>gmdate("Y-m-d H:i:s"),
-
-                                    //HRMS MODIFIED
-                                    'complete_address'=>($complete_address!=''?$complete_address:NULL),
-                                    'emergency_contact'=>($emergency_contact!=''?$emergency_contact:NULL),
-                                    'last_attendance'=>($last_attendance!=''?$last_attendance:NULL)
+                                    'modifieddate'=>gmdate("Y-m-d H:i:s")
 				);
 				if($id == '')
 				{

@@ -1,8 +1,8 @@
-<?php 
-/********************************************************************************* 
+<?php
+/*********************************************************************************
  *  This file is part of Sentrifugo.
  *  Copyright (C) 2014 Sapplica
- *   
+ *
  *  Sentrifugo is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -22,14 +22,14 @@ if($this->ermsg !='')
 {
 ?>
      <div class="ml-alert-1-info m1-info-set"><div class="style-1-icon info"></div>No data found.</div>
-<?php 
+<?php
 }
 else
 {
 ?>
 <script type="text/javascript" src="<?php echo MEDIA_PATH;?>js/jquery.prettyPhoto.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo MEDIA_PATH; ?>css/prettyPhoto.css" />     
-<?php      
+<link rel="stylesheet" type="text/css" href="<?php echo MEDIA_PATH; ?>css/prettyPhoto.css" />
+<?php
 $baseUrl = $this->serverUrl().$this->baseUrl();
 $data = $this->data;
 $action_name = $this->action_name;
@@ -46,37 +46,37 @@ $app_names = $this->app_names;
 $exec_data = $this->exec_data;
 $priority_arr = array(1 => "Low",2 => "Medium",3 => "High");
 ?>
-<?php 
+<?php
 	if(isset($data['attachment']) && $data['attachment']!=''){
-	$attachments = json_decode($data['attachment'],true); 
+	$attachments = json_decode($data['attachment'],true);
                 if(sizeof($attachments) == 1)
             	{?>
             	<style type="text/css">
 					.pp_previous, .pp_next{
 						display: none !important;
 					}
-					
+
 					.status-info i{ clear:both;}
-					
+
 				</style>
            <?php }
 	}?>
 <div class="ml-alert-1-error" id="manager_error" style="display: none;"><div class="style-1-icon error"></div>This request cannot be sent for manager's approval as you are the reporting manager.</div>
 <div class="fltright fullwidth mrgebtm10">
-<?php 
+<?php
 if($grid_type == 'request' && $status == 'Open')
 {
 ?>
     <div class="status-top-buttons" id="idcancel_request"><span class="sprite cancel-req-btn">Cancel Request</span></div>
-<?php     
+<?php
 }
 else if( ($grid_type == 'rec_rept' || $grid_type == 'receiver') && $status == 'Open' )
-{    
+{
 ?>
     <div class="status-top-buttons" id="idmanager_approval"><span class="sprite manager-btn">Manager Approval</span></div>
     <div class="status-top-buttons" id="idmanagement_approval"><span class="sprite management-btn">Management Approval</span></div>
     <div class="status-top-buttons" id="idclose_request"><span class="sprite close-req-btn">Close Request</span></div>
-<?php 
+<?php
 }
 ?>
 </div>
@@ -86,17 +86,17 @@ else if( ($grid_type == 'rec_rept' || $grid_type == 'receiver') && $status == 'O
        <form id="frm_action" method="post" action="">
         <input type='hidden' name='hid_status' id="hid_status" value='' />
            <div class="status-info" id="div_action"><label class="required">Action<b>:</b></label><p><select name="request_action" id="idrequest_action"><option value="">Select Action</option><option value="Approve">Approve</option><option value="Reject">Reject</option></select><br /></p></div>
-            <div class="status-info" id="div_comments"><label class="required">Comments<b>:</b></label><p><textarea name="request_comments" id="idrequest_comments" maxlength='200' cols='50' rows='10'></textarea></p></div>
+            <div class="status-info" id="div_comments"><label class="required">Comments<b>:</b></label><p><textarea name="request_comments" id="idrequest_comments" maxlength='700' cols='50' rows='10'></textarea></p></div>
         </form>
       </div>
-      
+
        <div id="hidform" style="display:none;"></div>
         <div class="new-form-ui-submit" id="divbuttons" style="margin-bottom:20px;">
 		<!--<input type="button" value="Back" id="idbtnback" name="btnback" onclick="window.location.href='<?php //echo BASE_URL; ?>servicerequests/index/t/<?php// echo sapp_Global::_encrypt($grid_type_arr[$grid_type]);?><?php// echo ($status_value != ''?"/v/".$status_value:"");?>';">-->
 		</div>
 
 
-<?php 
+<?php
     $disp_status = $status;
     if($status == 'To manager approve')
     {
@@ -121,24 +121,24 @@ else if( ($grid_type == 'rec_rept' || $grid_type == 'receiver') && $status == 'O
             }
         }
     }
-     
+
 ?>
 
 
-<?php 
+<?php
 sapp_Helper::viewHeader();
 sapp_Helper::viewBody('alt','Status',(!empty($disp_status))?$disp_status:"...",'Ticket',(!empty($this->data['ticket_number']))?$this->data['ticket_number']:"...");
 if($this->data['request_for']=='Service'){
 sapp_Helper::viewBody('nor','Category',(!empty($this->data['service_desk_name']))?$this->data['service_desk_name']:"...",'Request Type',(!empty($this->data['service_request_name']))?$this->data['service_request_name']:"...");
 }else{
 sapp_Helper::viewBody('nor','Category',(!empty($this->data['service_request_name']))?$this->data['service_request_name']:"...",'Request Type',(!empty($this->data['service_desk_name']))?$this->data['service_desk_name']:"...");
-	
+
 }
 sapp_Helper::viewBody('alt','Priority',(!empty($this->data['priority']))?$this->data['priority']:"...",'Description',(!empty($this->data['description']))?$this->data['description']:"...");
-sapp_Helper::viewBody('nor','Request For',(!empty($this->data['request_for']))?$this->data['request_for']:"...",'Raised On',(!empty($this->raised_date))?$this->raised_date:"..."); 
+sapp_Helper::viewBody('nor','Request For',(!empty($this->data['request_for']))?$this->data['request_for']:"...",'Raised On',(!empty($this->raised_date))?$this->raised_date:"...");
 if($status == 'Closed' || $status == 'Rejected')
     {
-sapp_Helper::viewBody('alt','Executor comments',(!empty($this->data['executor_comments']))?$this->data['executor_comments']:"...",'',''); 
+sapp_Helper::viewBody('alt','Executor comments',(!empty($this->data['executor_comments']))?$this->data['executor_comments']:"...",'','');
     }
 if($data['attachment']!=''){?>
 
@@ -148,7 +148,7 @@ if($data['attachment']!=''){?>
      </div>
     <div class="width_80">
      <label>
-     <?php 
+     <?php
       $attachments = json_decode($data['attachment'],true); $i=0;
         foreach ($attachments as $k => $v){
                         if(in_array(strtolower(sapp_Htmlhelper::getExtension($v)), array('jpg','png','gif','jpeg'))) {?>
@@ -159,47 +159,47 @@ if($data['attachment']!=''){?>
                         <a href="<?php echo SD_FILES_PATH.$v;?>?iframe=true&width=80%&height=90%" rel="prettyPhoto[pp_gal]" title="<?php echo $k;?>">
                         <?php if($i == 0){ ?>Click to view<?php }?>
                         </a>
-                <?php }$i++;}  ?>          
-                    
+                <?php }$i++;}  ?>
+
    </label>
    </div>
-</div>	
+</div>
 
-<?php 
+<?php
 }
 sapp_Helper::viewFooter();
 ?>
- 
+
 <br>
     <h1>Raised by</h1>
-<?php 
+<?php
 $reportingmanager=ucfirst($raised_by_details['reporting_manager_name']);
 sapp_Helper::viewHeader();
 sapp_Helper::viewBody('alt','Employee Name',(!empty($this->data['raised_by_name']))?$this->data['raised_by_name']:"...",'Employee ID',(!empty($this->data['raised_by_empid']))?$this->data['raised_by_empid']:"...");
-sapp_Helper::viewBody('nor','Reporting Manager',(!empty($reportingmanager))?$reportingmanager:"...",'Approver 1',(!empty($app_names['approver_1']))?$app_names['approver_1']:"No approver"); 
+sapp_Helper::viewBody('nor','Reporting Manager',(!empty($reportingmanager))?$reportingmanager:"...",'Approver 1',(!empty($app_names['approver_1']))?$app_names['approver_1']:"No approver");
 if(isset($app_names['approver_2']) && isset($app_names['approver_3']) )
     {
-sapp_Helper::viewBody('alt','Approver 2',(!empty($app_names['approver_2']))?$app_names['approver_2']:"No approver",'Approver 3',(!empty($app_names['approver_3']))?$app_names['approver_3']:"No approver"); 
+sapp_Helper::viewBody('alt','Approver 2',(!empty($app_names['approver_2']))?$app_names['approver_2']:"No approver",'Approver 3',(!empty($app_names['approver_3']))?$app_names['approver_3']:"No approver");
     }
 else if(isset($app_names['approver_2']))
  {
 sapp_Helper::viewBody('nor','Approver 2',(!empty($app_names['approver_2']))?$app_names['approver_2']:"No approver",'','');
  }
-//sapp_Helper::viewBody('nor','Approver 2',(!empty($app_names['approver_2']))?$app_names['approver_2']:"No approver",'',''); 
-sapp_Helper::viewBody('nor','Executors',(!empty($exec_data))?implode(',', $exec_data):"...",'',''); 
-//sapp_Helper::viewBody('nor','Executors ',(!empty(implode(',', $exec_data)))?implode(',', $exec_data):"...",'',''); 
-sapp_Helper::viewFooter();     
-   
+//sapp_Helper::viewBody('nor','Approver 2',(!empty($app_names['approver_2']))?$app_names['approver_2']:"No approver",'','');
+sapp_Helper::viewBody('nor','Executors',(!empty($exec_data))?implode(',', $exec_data):"...",'','');
+//sapp_Helper::viewBody('nor','Executors ',(!empty(implode(',', $exec_data)))?implode(',', $exec_data):"...",'','');
+sapp_Helper::viewFooter();
+
   if($grid_type != 'request')
     {
 ?>
-     
-    <?php 
+
+    <?php
     }
-    ?>        
+    ?>
 
 
- 
+
    <!--   <div class="status-div">
         <div class="status-info"><label>Status<b>:</b></label><p><b><?php //echo $disp_status;?></b></p></div>
         <div class="status-info"><label class="number-text">Ticket<b>:</b></label><p><?php //echo $data['ticket_number'];?></p></div>
@@ -213,13 +213,13 @@ sapp_Helper::viewFooter();
    // {
     ?>
         <div class="status-info"><label>Executor comments<b>:</b></label><p><?php// echo ucfirst(trim(htmlentities(($data['executor_comments']), ENT_QUOTES, "UTF-8")));?></p></div>
-    <?php 
+    <?php
    // }
    // if($data['attachment']!=''){ ?>
     	<div class="status-info">
             <label>Attachment(s) <b>:</b> </label>
             <p>
-          	<?php 
+          	<?php
               /*	$attachments = json_decode($data['attachment'],true); $i=0;
                     foreach ($attachments as $k => $v){
                         if(in_array(strtolower(sapp_Htmlhelper::getExtension($v)), array('jpg','png','gif','jpeg'))) {?>
@@ -230,7 +230,7 @@ sapp_Helper::viewFooter();
                         <a href="<?php echo SD_FILES_PATH.$v;?>?iframe=true&width=80%&height=90%" rel="prettyPhoto[pp_gal]" title="<?php echo $k;?>">
                         <?php if($i == 0){ ?>Click to view<?php }?>
                         </a>
-                <?php }$i++;}?>            
+                <?php }$i++;}?>
             </p>
         </div>
     <?php }
@@ -244,7 +244,7 @@ sapp_Helper::viewFooter();
                 <div class="status-info" id="div_comments"><label class="required">Comments<b>:</b></label><p><textarea name="request_comments" id="idrequest_comments" maxlength='200' cols='50' rows='10'></textarea></p></div>
             </form>
         </div>
-    <?php 
+    <?php
     }
     ?>
         <div id="hidform" style="display:none;"></div>
@@ -257,27 +257,27 @@ sapp_Helper::viewFooter();
             <div class="raised-info"><label>Employee Name<b>:</b></label><p><?php //echo ucfirst($data['raised_by_name']);?></p></div>
             <div class="raised-info"><label>Employee ID<b>:</b></label><p><?php //echo $data['raised_by_empid'];?></p></div>
             <div class="raised-info"><label>Reporting Manager<b>:</b></label><p><?php// echo ucfirst($raised_by_details['reporting_manager_name']);?></p></div>
-        <?php 
+        <?php
         //if(isset($app_names['approver_1']))
         //{
         ?>
             <div class="raised-info"><label>Approver 1<b>:</b></label><p><?php echo //ucfirst($app_names['approver_1']);?></p></div>
-        <?php 
+        <?php
       // }
       //  if(isset($app_names['approver_2']))
         //{
         ?>
-            <div class="raised-info"><label>Approver 2<b>:</b></label><p><?php //echo ucfirst($app_names['approver_2']);?></p></div>                        
-        <?php 
+            <div class="raised-info"><label>Approver 2<b>:</b></label><p><?php //echo ucfirst($app_names['approver_2']);?></p></div>
+        <?php
         /*}
         if(isset($app_names['approver_3']))
         {*/
         ?>
             <div class="raised-info"><label>Approver 3<b>:</b></label><p><?php// echo ucfirst($app_names['approver_3']);?></p></div>
-        <?php 
+        <?php
       //  }*/
-        ?>                        
-            <div class="raised-info"><label>Executors <b>:</b></label><p><textarea disabled="disabled"><?php //echo implode(',', $exec_data);?></textarea></p></div>          
+        ?>
+            <div class="raised-info"><label>Executors <b>:</b></label><p><textarea disabled="disabled"><?php //echo implode(',', $exec_data);?></textarea></p></div>
         </div>
     </div>-->
 
@@ -286,47 +286,47 @@ sapp_Helper::viewFooter();
 <div class="history-info-div">
     <div class="history-div">
     	<h2>request History</h2>
-<?php 
+<?php
     foreach($request_history as $history)
-    {       
+    {
 ?>
         <div class="history-flow">
             <div class="history-img"><img width="28" height="28" border="0" src="<?php echo $baseUrl; ?>/public/uploads/profile/<?php echo $history['emp_profileimg'];?>" onerror="this.src='<?php echo MEDIA_PATH; ?>images/profile_pic.png'" /></div>
             <div class="history-text"><span><?php echo trim($history['history']);?></span><?php if($history['comments'] != ''){?><p>Comment: <?php echo ucfirst(trim(htmlentities(($history['comments']), ENT_QUOTES, "UTF-8")));?></p><?php }?><b><?php echo sapp_Global::change_date($history['hdate'], 'view');?>  <?php echo sapp_Global::getDisplaySDTime($history['htime']);?></b></div>
         </div>
-<?php         
+<?php
     }
-?>                
+?>
     </div>
-    
+
     <div class="info-show-div">
-<?php 
+<?php
 if($grid_type == 'request' && $status == 'Open')
 {
 ?>
     <div class="single-info-div"><div class="sprite cancel-req-info info-show">Cancel Request</div>Request will be cancelled by you.</div>
-<?php     
+<?php
 }
 else if( ($grid_type == 'rec_rept' || $grid_type == 'receiver') && $status == 'Open' )
 {
-?>        
+?>
         <div class="single-info-div"><div class="sprite close-req-info info-show">Close Request</div><div class="info-show-text">Request will be closed by executing or rejecting.</div></div>
         <div class="single-info-div"><div class="sprite management-info info-show">Management Approval</div><div class="info-show-text">Request will be sent to higher authorities for Management's approval.</div></div>
         <div class="single-info-div"><div class="sprite manager-info info-show">Manager Approval</div><div class="info-show-text">Request will be sent for employee Manager's approval.</div></div>
-<?php 
+<?php
 }
 ?>
     </div>
 </div>
-<script type="text/javascript" >    
+<script type="text/javascript" >
 $(document).ready(function(){
 $("a[rel^='prettyPhoto']").prettyPhoto({social_tools : '', deeplinking: false});
-<?php      
+<?php
 if($grid_type == 'request' && $status == 'Open')
 {
 ?>
     $('#idcancel_request').click(function(){
-        jConfirm("Are you sure you want to cancel this request?", "Cancel Request ", function(r) 
+        jConfirm("Are you sure you want to cancel this request?", "Cancel Request ", function(r)
         {
             if(r==true)
             {
@@ -343,25 +343,25 @@ if($grid_type == 'request' && $status == 'Open')
 					else
 					{
 						window.location.href = base_url+'/servicerequests/index/t/<?php echo sapp_Global::_encrypt("1"); ?>';
-					}					
+					}
                 },'json');
-            }			
+            }
         });
     });
-<?php         
+<?php
 }
 if( ($grid_type == 'rec_rept' || $grid_type == 'receiver'))
 {
 ?>
-    $('#idclose_request').click(function(){                		
-        close_request();        
+    $('#idclose_request').click(function(){
+        close_request();
     });
-    $('#idmanager_approval').click(function(){                
+    $('#idmanager_approval').click(function(){
         send_approval('To manager approve');
     });
     $('#idbtnclose').on('click',btnclose_click);
     $('#idbtn_man_app').on('click',btn_man_app_click);
-    
+
     $('#idmanagement_approval').click(function(){
         send_approval('To management approve');
     });
@@ -387,7 +387,7 @@ if( ($grid_type == 'rec_rept' || $grid_type == 'receiver'))
             $('#idbtn_man_app').remove();
             $('#idbtnclose').remove();
             $('#divbuttons').prepend("<input type='button' id='idbtn_man_app' value='Submit' />");
-            $('#idbtn_man_app').on('click',btn_man_app_click);        
+            $('#idbtn_man_app').on('click',btn_man_app_click);
         }
         line_height();
     }
@@ -400,27 +400,27 @@ if( ($grid_type == 'rec_rept' || $grid_type == 'receiver'))
         $('#idbtnclose').remove();
         $('#idbtn_man_app').remove();
         $('#divbuttons').prepend("<input type='button' id='idbtnclose' value='Submit' />");
-        $('#idbtnclose').on('click',btnclose_click);    
+        $('#idbtnclose').on('click',btnclose_click);
         line_height();
     }
-<?php 
+<?php
     if(in_array($status,array('Manager approved','Manager rejected','Management approved','Management rejected')) && sapp_Global::_decrypt($status_value) == 8)
     {
 ?>         close_request();
-<?php        
+<?php
     }
 ?>
-    
+
     function btn_man_app_click()
-    {                
+    {
         var err_comments = comments_blur();
-        
+
         if(err_comments == "")
-        {            
-            $('#frm_action').submit();            
+        {
+            $('#frm_action').submit();
         }
-    }        
-<?php        
+    }
+<?php
 }
 if($status == 'To manager approve' && $loginUserId == $data['reporting_manager_id'])
 {
@@ -433,7 +433,7 @@ if($status == 'To manager approve' && $loginUserId == $data['reporting_manager_i
     $('#idbtn_man_app').remove();
     $('#divbuttons').prepend("<input type='button' id='idbtnclose' value='Submit' />");
     $('#idbtnclose').on('click',btnclose_click);
-<?php         
+<?php
 }
 if(is_array($approver_level) && isset($approver_level['app_pos']))
 {
@@ -447,10 +447,10 @@ if(is_array($approver_level) && isset($approver_level['app_pos']))
     $('#frm_action').append("<input type='hidden' name='hid_app_pos' value='<?php echo $approver_level['app_pos'];?>' /><input type='hidden' name='hid_max_app' value='<?php echo $approver_level['max_app'];?>' />");
     $('#divbuttons').prepend("<input type='button' id='idbtnclose' value='Submit' />");
     $('#idbtnclose').on('click',btnclose_click);
-<?php         
+<?php
 }
 
-?>   
+?>
   $('#s2id_idrequest_action').blur(function(){
         action_blur('s2id_idrequest_action');
     });
@@ -459,7 +459,7 @@ if(is_array($approver_level) && isset($approver_level['app_pos']))
     });
     $('#idrequest_comments').keyup(function(){
         //comments_keyup();
-    });  
+    });
     line_height();
 });//end of ready function
 function line_height()
@@ -471,7 +471,7 @@ function action_blur(id)
 {
     $('#errors-idrequest_action').remove();
     if($.trim($('#idrequest_action').val()) == '')
-    {            
+    {
         $('#'+id).parent().append("<i class='errors' id='errors-idrequest_action'>Please select an action.</i>");
         return "error";
     }
@@ -486,7 +486,7 @@ function comments_blur()
     $('#errors-idrequest_comments').remove();
     if($.trim($('#idrequest_comments').val()) == '')
     {
-        $('#idrequest_comments').parent().append("<i class='errors' id='errors-idrequest_comments'>Please enter comments.</i>");        
+        $('#idrequest_comments').parent().append("<i class='errors' id='errors-idrequest_comments'>Please enter comments.</i>");
         $('#idrequest_comments').val('');
         return "error";
     }
@@ -519,9 +519,9 @@ function comments_keyup()
     return "";
 }
 
-selected_obj = $("li[menu-url='<?php echo BASE_URL ;?>servicerequests/index/t/<?php echo sapp_Global::_encrypt($grid_type_arr[$grid_type]);?><?php echo ($status_value != ''?"/v/".$status_value:"");?>']"); 
-parent_div = selected_obj.attr("parent-div"); 
-        
+selected_obj = $("li[menu-url='<?php echo BASE_URL ;?>servicerequests/index/t/<?php echo sapp_Global::_encrypt($grid_type_arr[$grid_type]);?><?php echo ($status_value != ''?"/v/".$status_value:"");?>']");
+parent_div = selected_obj.attr("parent-div");
+
 selected_obj.addClass("active_menu_class");
 $('.'+parent_div).addClass("selected_menu_class");
 $('.'+parent_div).show();
@@ -537,7 +537,7 @@ if(parent_div != "dummy")
 //end to add selected class for selected child menu
 function btnclose_click()
 {
-    var action = $('#idrequest_action').val();        
+    var action = $('#idrequest_action').val();
     var err_action = action_blur('s2id_idrequest_action');
     var err_comments = comments_blur();
 
@@ -545,12 +545,12 @@ function btnclose_click()
     {
         if(action == 'Reject')
         {
-            jConfirm("Are you sure you want to reject this request?", "Close Request ", function(r) 
+            jConfirm("Are you sure you want to reject this request?", "Close Request ", function(r)
             {
                 if(r==true)
-                {		
+                {
                     $('#frm_action').submit();
-                }			
+                }
             });
         }
         else
@@ -560,6 +560,6 @@ function btnclose_click()
     }
 }
 </script>
-<?php 
+<?php
 }
 ?>
